@@ -6,7 +6,7 @@ This project demonstrates my frontend development skills — from creating struc
 ---
 
 ## 🌍 Live Demo
-🔗 [Visit Live Website](https://your-username.github.io/getinnn-website/)  
+🔗 [Visit Live Website](https://shubhamsingh024.github.io/getinnnsports/)  
 
 ---
 
