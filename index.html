@@ -1,139 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="getinnn-logo.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Getinnn Sports | Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getinnn Sports</title>
   <style>
-    /* ==== Base Styles ==== */
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; }
-    header { background: #000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    header img.logo { height: 50px; margin-right: 10px; vertical-align: middle; }
-    header h2 { display: inline-block; font-size: 1.6rem; }
-
-    nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
-    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
-    nav ul li a:hover { color: #39ff14; }
-
-    /* Hero Slideshow */
-    .hero { position: relative; width: 100%; text-align: center; overflow: hidden; }
-    .slideshow img { width: 100%; height: auto; display: none; }
-    .slideshow img.active { display: block; }
-    .overlay { position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.55); }
-    .hero-content {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      z-index: 2; max-width: 800px; padding: 2rem; text-align: center;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
     }
-    .hero-content h1 { font-size: 3.5rem; color: #39ff14; margin-bottom: 1.2rem; font-weight: bold; text-transform: uppercase; }
-    .hero-content h3 { font-size: 1.6rem; margin-bottom: 2rem; }
-    .hero-content a {
-      padding: 1rem 2.2rem; background: #e63946; color: #fff; font-weight: bold;
-      border-radius: 30px; text-decoration: none; box-shadow: 0 0 15px rgba(230,57,70,0.6);
-      transition: 0.3s; font-size: 1.1rem;
-    }
-    .hero-content a:hover { background: #ff4d5a; }
 
-    /* Partners */
-    .partners { background: #111; text-align: center; padding: 2rem 1rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
-    .partners img { height: 60px; }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #000;
+      position: relative;
+      z-index: 20;
+    }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .navbar .logo img {
+      width: 40px;
+      margin-right: 10px;
+    }
+    .navbar .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .navbar .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar .menu a:hover { color: #39ff14; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #39ff14;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      padding: 4rem 2rem;
+      transition: right 0.3s ease-in-out;
+      z-index: 30;
+    }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu a {
+      margin: 1rem 0;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .mobile-menu a:hover { color: #39ff14; }
+    .close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #39ff14;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem 2rem;
+      min-height: 90vh;
+    }
+    .hero-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .hero-left h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .typing {
+      display: inline-block;
+      border-right: 3px solid #39ff14;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(20, end) infinite, blink 0.7s infinite;
+      color: #39ff14;
+      font-weight: bold;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }
+    @keyframes typing {
+      0% { width: 0 }
+      50% { width: 100% }
+      100% { width: 0 }
+    }
+    @keyframes blink {
+      0%, 100% { border-color: transparent }
+      50% { border-color: #39ff14 }
+    }
+
+    /* Quote line */
+    .quote {
+      font-size: 1rem;
+      color: #fff;
+      margin-top: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Hero Right - Slider */
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .slider {
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 4 / 3;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .slides {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    /* Section Divider */
+    .section-divider {
+      width: 100%;
+      margin: 1rem 0;
+      border-top: 1px solid rgba(57, 255, 20, 0.8);
+      box-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+    }
+
+    /* What We Do Section */
+    .what-we-do {
+      padding: 3rem 2rem;
+      text-align: center;
+      background: #000;
+    }
+    .what-we-do h2 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #39ff14;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .carousel {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+    .card {
+      width: 100%;
+      flex-shrink: 0;
+      background: #111;
+      border: 1px solid #39ff14;
+      border-radius: 12px;
+      text-align: center;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      color: #39ff14;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      border: none;
+      color: #39ff14;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    .prev:hover, .next:hover {
+      background: #39ff14;
+      color: #000;
+    }
 
     /* Footer */
-    footer { background: #0d0d0d; text-align: center; padding: 1.5rem; margin-top: 2rem; }
-
-    /* ==== Mobile Navbar ==== */
-    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-    .hamburger div { width: 25px; height: 3px; background: #39ff14; border-radius: 2px; }
-    @media (max-width: 768px) {
-      header { flex-wrap: wrap; justify-content: space-between; padding: 1rem; }
-      .hamburger { display: flex; }
-      nav { width: 100%; display: none; flex-direction: column; background: #000; }
-      nav.active { display: flex; }
-      nav ul { flex-direction: column; gap: 1rem; padding: 1rem 0; text-align: center; }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #000;
+      font-size: 0.9rem;
+      border-top: 1px solid #39ff14;
     }
 
-    /* ==== Mobile Hero ==== */
+    /* Responsive */
     @media (max-width: 768px) {
-      .hero-content { max-width: 95%; padding: 1rem; }
-      .hero-content h1 { font-size: 2rem; }
-      .hero-content h3 { font-size: 1rem; }
-      .hero-content a { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
-      .partners img { height: 50px; }
-    }
-    @media (max-width: 480px) {
-      .hero-content h1 { font-size: 1.5rem; }
-      .hero-content h3 { font-size: 0.9rem; }
-      .hero-content a { padding: 0.7rem 1.2rem; font-size: 0.8rem; }
+      .navbar .menu { display: none; }
+      .hamburger { display: block; }
+      .hero { flex-direction: column; text-align: center; }
+      .hero-left { align-items: center; padding: 1rem; }
+      .hero-left h1 { font-size: 2rem; text-align: center; }
+      .typing { font-size: 1.8rem; margin: 0 auto; }
+      .quote { font-size: 0.9rem; text-align: center; }
+      .hero-right { margin-top: 2rem; width: 100%; }
+      .slider { max-width: 95%; aspect-ratio: 4 / 3; }
+      .card img { height: 160px; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo-container">
-      <img src="getinnn-logo.png" alt="Getinnn Logo" class="logo">
-      <h2>Getinnn Sports</h2>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="getinnn-logo.png" alt="Logo" />
+      Getinnn Sports
     </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="academy.html">Academy</a>
+      <a href="infra.html">Infrastructure</a>
+      <a href="socials.html">Socials</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="academy.html">Academy</a></li>
-        <li><a href="socials.html">Socials</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </nav>
 
-  <!-- Hero Slideshow -->
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="close-btn" id="closeBtn">&times;</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="academy.html">Academy</a>
+    <a href="infra.html">Infrastructure</a>
+    <a href="socials.html">Socials</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="slideshow">
-      <img src="p1.jpg" alt="Football Event 1" class="active">
-      <img src="p2.jpg" alt="Football Event 2">
-      <img src="p3.jpg" alt="Football Event 3">
-      <img src="p4.jpg" alt="Football Event 3">
-      <img src="p5.jpg" alt="Football Event 3">
+    <div class="hero-left">
+      <h1>WELCOME TO</h1>
+      <div class="typing">GET INNN SPORTS</div>
+      <p class="quote">Sports Management Solutions</p>
     </div>
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Sports Management & Event Solutions</h1>
-      <h3>In partnership with Rafa Football Academy</h3>
-      <a href="events.html">Explore Event</a>
+    <div class="hero-right">
+      <div class="slider">
+        <div class="slides" id="slides">
+          <img src="p1.jpg" alt="Slide 1" />
+          <img src="p2.jpg" alt="Slide 2" />
+          <img src="p3.jpg" alt="Slide 3" />
+          <img src="p4.jpg" alt="Slide 4" />
+          <img src="p5.jpg" alt="Slide 5" />
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Partners Section -->
-  <section class="partners">
-    <img src="getinnn-logo.png" alt="Getinnn Sports Logo">
-    <img src="rafa-logo.png" alt="Rafa Football Academy Logo">
+  <!-- Divider Line -->
+  <div class="section-divider"></div>
+
+  <!-- What We Do Section -->
+  <section class="what-we-do">
+    <h2>⚡ What We Do</h2>
+    <div class="carousel-container">
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <div class="carousel" id="carousel">
+        <div class="card">
+          <img src="academy.jpg" alt="Academy">
+          <h3>Academy</h3>
+          <p>Training programs to nurture and guide aspiring young athletes.</p>
+        </div>
+        <div class="card">
+          <img src="tournaments.jpg" alt="Tournaments">
+          <h3>Tournaments</h3>
+          <p>Organizing competitive tournaments to bring the best talents together.</p>
+        </div>
+        <div class="card">
+          <img src="inf.jpg" alt="Infrastructure">
+          <h3>Infrastructure</h3>
+          <p>Building and managing world-class sports facilities.</p>
+        </div>
+        <div class="card">
+          <img src="p3.jpg" alt="eSports">
+          <h3>eSports</h3>
+          <p>Expanding into eSports to engage with digital gaming communities.</p>
+        </div>
+      </div>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Getinnn Sports | All Rights Reserved</p>
+    © 2025 Getinnn Sports | All Rights Reserved
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Slideshow logic
-    let slides = document.querySelectorAll('.slideshow img');
-    let current = 0;
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 4000);
+    // Hero Slider
+    const slidesContainer = document.getElementById('slides');
+    const slides = slidesContainer.querySelectorAll('img');
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    const intervalTime = 5000;
 
-    // Mobile menu toggle
-    function toggleMenu() {
-      document.querySelector('.nav-menu').classList.toggle('active');
+    function showSlide(index) {
+      slidesContainer.style.transform = `translateX(-${index * 100}%)`;
     }
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slideCount;
+      showSlide(currentIndex);
+    }, intervalTime);
+
+    // What We Do Carousel
+    const carousel = document.getElementById('carousel');
+    const cards = document.querySelectorAll('.card');
+    let index = 0;
+
+    function moveSlide(step) {
+      index += step;
+      if (index < 0) index = cards.length - 1;
+      if (index >= cards.length) index = 0;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeBtn');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+    });
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+    });
   </script>
 </body>
 </html>
