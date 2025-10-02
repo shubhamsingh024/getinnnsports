@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infrastructure | Getinnn Sports</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #000;
+    }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .navbar .logo img {
+      width: 40px;
+      margin-right: 10px;
+    }
+    .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .menu a:hover { color: #39ff14; }
+    .hamburger { display: none; font-size: 2rem; cursor: pointer; color: #39ff14; }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      padding: 4rem 2rem;
+      transition: right 0.3s ease-in-out;
+      z-index: 30;
+    }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu a {
+      margin: 1rem 0;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .mobile-menu a:hover { color: #39ff14; }
+    .close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #39ff14;
+    }
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: #111;
+    }
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: #39ff14;
+    }
+    .page-header p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-top: 1rem;
+    }
+
+    /* Infra Cards */
+    .infra-section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .infra-card {
+      background: #111;
+      border: 1px solid #39ff14;
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .infra-card:hover {
+      transform: translateY(-8px);
+    }
+    .infra-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .infra-card h2 {
+      margin: 1rem 0 0.5rem;
+      color: #39ff14;
+    }
+    .infra-card p {
+      padding: 0 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .infra-card .btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.5rem;
+      background: #39ff14;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .infra-card .btn:hover {
+      background: #2ecc71;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #000;
+      font-size: 0.9rem;
+      border-top: 1px solid #39ff14;
+    }
+
+    @media(max-width:768px){
+      .menu{display:none;}
+      .hamburger{display:block;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="getinnn-logo.png" alt="Logo"> Getinnn Sports
+    </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="academy.html">Academy</a>
+      <a href="infrastructure.html">Infrastructure</a>
+      <a href="socials.html">Socials</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="close-btn" id="closeBtn">&times;</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="academy.html">Academy</a>
+    <a href="infrastructure.html">Infrastructure</a>
+    <a href="socials.html">Socials</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Infrastructure</h1>
+    <p>Explore our world-class sports turfs across India.</p>
+  </section>
+
+  <!-- Infrastructure Cards -->
+  <section class="infra-section">
+    <div class="infra-grid">
+      <!-- Mira Road -->
+      <div class="infra-card">
+        <img src="inf.jpg" alt="Mira Road Turf">
+        <h2>GET INNN SPORTS ARENA- Mira Road</h2>
+        <p>A premium facility with state-of-the-art turf and amenities for all age groups.</p>
+        <a href="contact.html" class="btn">Contact Now</a>
+      </div>
+
+      <!-- Borivali -->
+      <div class="infra-card">
+        <img src="gorai.jpg" alt="Borivali Turf">
+        <h2>GET INNN SPORTS ARENA- Gorai</h2>
+        <p>Strategically located, offering top-quality sports infrastructure for athletes.</p>
+        <a href="contact.html" class="btn">Contact Now</a>
+      </div>
+
+      <!-- Surat -->
+      <div class="infra-card">
+        <img src="surat.jpg" alt="Surat Turf">
+        <h2>GET INNN SPORTS ARENA- Surat</h2>
+        <p>A modern turf in Surat with excellent facilities to encourage local talent.</p>
+        <a href="contact.html" class="btn">Contact Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Getinnn Sports | All Rights Reserved
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeBtn');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+    });
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
