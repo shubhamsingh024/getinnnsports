@@ -19,6 +19,44 @@
     nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
     nav ul li a:hover { color: #39ff14; }
 
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 25px; height: 3px; background: #fff; }
+
+    nav.mobile-nav {
+      position: fixed;
+      top: 0; right: -260px;
+      width: 260px; height: 100%;
+      background: #111;
+      transition: right 0.3s ease-in-out;
+      padding-top: 4rem;
+      z-index: 1000;
+    }
+    nav.mobile-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 0 1.5rem;
+    }
+    nav.mobile-nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    nav.mobile-nav ul li a:hover { color: #39ff14; }
+    nav.mobile-nav.active { right: 0; }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+    .close-btn:hover { color: #39ff14; }
+
     /* Hero Section */
     .academy-hero {
       background: #0a0a0a;
@@ -26,7 +64,7 @@
       padding: 4rem 2rem 3rem;
     }
     .academy-hero .rafa-logo {
-      height: 200px;   /* Increased from 160px → 200px */
+      height: 200px;
       margin-bottom: 1.5rem;
       transition: transform 0.3s ease;
     }
@@ -52,20 +90,13 @@
     /* Slideshow Section */
     .gallery { padding: 3rem 2rem; background: #0a0a0a; text-align: center; }
     .gallery h2 { font-size: 2rem; color: #39ff14; margin-bottom: 2rem; }
-
-    .slideshow-container {
-      position: relative;
-      max-width: 900px;
-      margin: auto;
-    }
+    .slideshow-container { position: relative; max-width: 900px; margin: auto; }
     .mySlides { display: none; }
     .mySlides img {
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(57,255,20,0.3);
     }
-
-    /* Dots */
     .dot-container { text-align: center; margin-top: 12px; }
     .dot {
       height: 12px; width: 12px;
@@ -102,6 +133,11 @@
     .social-links a:hover { background: #1a1a1a; color: #fff; }
 
     footer { background: #0d0d0d; text-align: center; padding: 1.5rem; margin-top: 2rem; }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -117,11 +153,30 @@
         <li><a href="about.html">About</a></li>
         <li><a href="events.html">Events</a></li>
         <li><a href="academy.html" style="color:#39ff14;">Academy</a></li>
+        <li><a href="infra.html">Infrastructure</a></li>
         <li><a href="socials.html">Socials</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="academy.html" style="color:#39ff14;">Academy</a></li>
+      <li><a href="infra.html">Infrastructure</a></li>
+      <li><a href="socials.html">Socials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- Hero Section -->
   <section class="academy-hero">
@@ -203,6 +258,11 @@
 
     // Auto Slide
     setInterval(() => { showSlides(++slideIndex); }, 4000);
+
+    // Toggle Mobile Menu
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
   </script>
 </body>
 </html>
