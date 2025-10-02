@@ -14,6 +14,38 @@
     nav ul { list-style:none; display:flex; gap:1.5rem; flex-wrap:wrap; }
     nav ul li a { color:#fff; text-decoration:none; font-weight:bold; }
     nav ul li a:hover { color:#39ff14; }
+
+    /* Hamburger */
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .hamburger span { width:25px; height:3px; background:#fff; }
+
+    nav.mobile-nav {
+      position:fixed; top:0; right:-260px;
+      width:260px; height:100%;
+      background:#111;
+      transition:right 0.3s ease-in-out;
+      padding-top:4rem;
+      z-index:1000;
+    }
+    nav.mobile-nav ul {
+      list-style:none;
+      display:flex; flex-direction:column;
+      gap:1.5rem; padding:0 1.5rem;
+    }
+    nav.mobile-nav ul li a {
+      color:#fff; text-decoration:none;
+      font-size:1.2rem; font-weight:bold;
+    }
+    nav.mobile-nav ul li a:hover { color:#39ff14; }
+    nav.mobile-nav.active { right:0; }
+
+    .close-btn {
+      position:absolute; top:1rem; right:1rem;
+      font-size:2rem; color:#fff; cursor:pointer;
+    }
+    .close-btn:hover { color:#39ff14; }
+
+    /* Contact Section */
     .contact-section { padding:3rem 2rem; text-align:center; }
     .contact-section h1 { font-size:2.5rem; color:#39ff14; margin-bottom:1rem; }
     .contact-section p { color:#ccc; margin-bottom:2rem; }
@@ -24,6 +56,11 @@
     button { background:#39ff14; color:#000; font-weight:bold; border:none; padding:0.9rem 1.5rem; border-radius:8px; cursor:pointer; font-size:1rem; }
     button:hover { background:#2ecc71; }
     footer { background:#0d0d0d; text-align:center; padding:1.5rem; margin-top:2rem; }
+
+    @media (max-width:768px) {
+      nav ul { display:none; }
+      .hamburger { display:flex; }
+    }
   </style>
 </head>
 <body>
@@ -39,11 +76,30 @@
         <li><a href="about.html">About</a></li>
         <li><a href="events.html">Events</a></li>
         <li><a href="academy.html">Academy</a></li>
+        <li><a href="infra.html">Infrastructure</a></li>
         <li><a href="socials.html">Socials</a></li>
         <li><a href="contact.html" style="color:#39ff14;">Contact</a></li>
       </ul>
     </nav>
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="academy.html">Academy</a></li>
+      <li><a href="infra.html">Infrastructure</a></li>
+      <li><a href="socials.html">Socials</a></li>
+      <li><a href="contact.html" style="color:#39ff14;">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- Contact Section -->
   <section class="contact-section">
@@ -83,7 +139,6 @@
       const phone = form.phone.value;
       const message = form.message.value;
 
-      // 👇 Replace with your client’s WhatsApp number (country code, no + or 0)
       const clientWhatsApp = "918369845397";
 
       const whatsappMessage =
@@ -97,6 +152,11 @@
 
       window.open(url, "_blank");
     });
+
+    // Toggle Mobile Menu
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
   </script>
 </body>
 </html>
