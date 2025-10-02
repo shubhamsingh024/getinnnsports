@@ -18,6 +18,45 @@
     nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
     nav ul li a:hover { color: #39ff14; }
 
+    /* ✅ Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+    }
+
+    /* ✅ Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; right: -100%;
+      width: 70%; height: 100%;
+      background: #000;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .mobile-menu.active { right: 0; display: flex; }
+    .mobile-menu ul { list-style: none; padding: 0; margin: 0; width: 100%; }
+    .mobile-menu ul li { margin: 1rem 0; }
+    .mobile-menu ul li a { color: #fff; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+    .mobile-menu ul li a:hover { color: #39ff14; }
+    .close-btn {
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      margin-left: auto;
+      margin-bottom: 2rem;
+    }
+
     /* Socials Section */
     .socials {
       padding: 3rem 2rem;
@@ -80,6 +119,8 @@
 
     /* ✅ Mobile Responsive */
     @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
       .socials h1 { font-size: 2.2rem; }
       .socials p { font-size: 1rem; }
     }
@@ -98,11 +139,32 @@
         <li><a href="about.html">About</a></li>
         <li><a href="events.html">Events</a></li>
         <li><a href="academy.html">Academy</a></li>
+        <li><a href="infra.html">Infrastructure</a></li>
         <li><a href="socials.html" style="color:#39ff14;">Socials</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <!-- ✅ Hamburger Icon -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
+
+  <!-- ✅ Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="academy.html">Academy</a></li>
+      <li><a href="infra.html">Infrastructure</a></li>
+      <li><a href="socials.html" style="color:#39ff14;">Socials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- Socials Section -->
   <section class="socials">
@@ -147,5 +209,12 @@
   <footer>
     <p>&copy; 2025 Getinnn Sports | All Rights Reserved</p>
   </footer>
+
+  <!-- ✅ Script -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+  </script>
 </body>
-</html>  
+</html>
