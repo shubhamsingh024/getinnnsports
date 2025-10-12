@@ -22,26 +22,33 @@
       position: relative;
       z-index: 20;
     }
+
     .navbar .logo {
       display: flex;
       align-items: center;
       font-size: 1.5rem;
       font-weight: bold;
     }
+
     .navbar .logo img {
       width: 40px;
       margin-right: 10px;
     }
+
     .navbar .menu {
       display: flex;
       gap: 1.5rem;
     }
+
     .navbar .menu a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
     }
-    .navbar .menu a:hover { color: #39ff14; }
+
+    .navbar .menu a:hover {
+      color: #39ff14;
+    }
 
     /* Hamburger */
     .hamburger {
@@ -65,7 +72,11 @@
       transition: right 0.3s ease-in-out;
       z-index: 30;
     }
-    .mobile-menu.active { right: 0; }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
     .mobile-menu a {
       margin: 1rem 0;
       color: #fff;
@@ -73,7 +84,11 @@
       font-weight: bold;
       text-decoration: none;
     }
-    .mobile-menu a:hover { color: #39ff14; }
+
+    .mobile-menu a:hover {
+      color: #39ff14;
+    }
+
     .close-btn {
       position: absolute;
       top: 1.5rem;
@@ -90,19 +105,41 @@
       align-items: center;
       padding: 4rem 2rem;
       min-height: 90vh;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* Background logo (desktop) */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: url('getinnn-logo.png') no-repeat center;
+      background-size: contain;
+      opacity: 0.07;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
     .hero-left {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+      position: relative;
+      z-index: 2;
     }
+
     .hero-left h1 {
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 1rem;
     }
+
     .typing {
       display: inline-block;
       border-right: 3px solid #39ff14;
@@ -114,17 +151,18 @@
       font-size: 2.5rem;
       text-transform: uppercase;
     }
+
     @keyframes typing {
       0% { width: 0 }
       50% { width: 100% }
       100% { width: 0 }
     }
+
     @keyframes blink {
       0%, 100% { border-color: transparent }
       50% { border-color: #39ff14 }
     }
 
-    /* Quote line */
     .quote {
       font-size: 1rem;
       color: #fff;
@@ -141,7 +179,9 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      z-index: 2;
     }
+
     .slider {
       width: 100%;
       max-width: 500px;
@@ -150,10 +190,12 @@
       overflow: hidden;
       border-radius: 10px;
     }
+
     .slides {
       display: flex;
       transition: transform 1s ease-in-out;
     }
+
     .slides img {
       width: 100%;
       height: 100%;
@@ -175,6 +217,7 @@
       text-align: center;
       background: #000;
     }
+
     .what-we-do h2 {
       font-size: 2.2rem;
       font-weight: bold;
@@ -182,6 +225,7 @@
       margin-bottom: 2rem;
       text-transform: uppercase;
     }
+
     .carousel-container {
       position: relative;
       width: 100%;
@@ -189,10 +233,12 @@
       margin: auto;
       overflow: hidden;
     }
+
     .carousel {
       display: flex;
       transition: transform 0.6s ease-in-out;
     }
+
     .card {
       width: 100%;
       flex-shrink: 0;
@@ -203,6 +249,7 @@
       padding: 1rem;
       box-sizing: border-box;
     }
+
     .card img {
       width: 100%;
       height: 200px;
@@ -210,14 +257,17 @@
       border-radius: 10px;
       margin-bottom: 1rem;
     }
+
     .card h3 {
       color: #39ff14;
       margin-bottom: 0.5rem;
     }
+
     .card p {
       color: #ccc;
       font-size: 0.9rem;
     }
+
     .prev, .next {
       position: absolute;
       top: 50%;
@@ -231,8 +281,10 @@
       border-radius: 50%;
       z-index: 10;
     }
+
     .prev { left: 10px; }
     .next { right: 10px; }
+
     .prev:hover, .next:hover {
       background: #39ff14;
       color: #000;
@@ -247,18 +299,89 @@
       border-top: 1px solid #39ff14;
     }
 
-    /* Responsive */
+    /* ✅ Responsive - Mobile Only Adjustments */
     @media (max-width: 768px) {
       .navbar .menu { display: none; }
       .hamburger { display: block; }
-      .hero { flex-direction: column; text-align: center; }
-      .hero-left { align-items: center; padding: 1rem; }
-      .hero-left h1 { font-size: 2rem; text-align: center; }
-      .typing { font-size: 1.8rem; margin: 0 auto; }
-      .quote { font-size: 0.9rem; text-align: center; }
-      .hero-right { margin-top: 2rem; width: 100%; }
-      .slider { max-width: 95%; aspect-ratio: 4 / 3; }
-      .card img { height: 160px; }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 1rem;
+        position: relative;
+      }
+
+      .hero-left {
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .hero-left h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .typing {
+        font-size: 1.8rem;
+        margin: 0 auto;
+      }
+
+      .quote {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      /* Background logo - larger, slightly higher opacity */
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        width: 320px;
+        height: 320px;
+        opacity: 0.28;
+        background: url('getinnn-logo.png') no-repeat center;
+        background-size: contain;
+        transform: translateX(-50%);
+        z-index: 1;
+      }
+
+      .hero-left, .hero-right {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Green line above auto slider - matches What We Do line */
+      .hero-right::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 100%;
+        height: 1px;  
+        background-color: rgba(57, 255, 20, 0.4); 
+        box-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
+        z-index: 2;
+      }
+
+      /* Taller slider box - images scale properly */
+      .slider {
+        width: 100%;
+        max-width: 100%;
+        height: 320px; 
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .slides img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card img {
+        height: 160px;
+      }
     }
   </style>
 </head>
@@ -300,6 +423,7 @@
       <div class="typing">GET INNN SPORTS</div>
       <p class="quote">Sports Management Solutions</p>
     </div>
+
     <div class="hero-right">
       <div class="slider">
         <div class="slides" id="slides">
@@ -348,9 +472,7 @@
   </section>
 
   <!-- Footer -->
-  <footer>
-    © 2025 Getinnn Sports | All Rights Reserved
-  </footer>
+  <footer>© 2025 Getinnn Sports | All Rights Reserved</footer>
 
   <script>
     // Hero Slider
@@ -389,6 +511,7 @@
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.add('active');
     });
+
     closeBtn.addEventListener('click', () => {
       mobileMenu.classList.remove('active');
     });
