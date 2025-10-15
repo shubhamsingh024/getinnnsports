@@ -5,119 +5,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getinnn Sports | Socials</title>
-  <!-- ✅ Font Awesome CDN -->
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; }
 
     /* Header */
     header { background: #000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    header img.logo { height: 50px; margin-right: 10px; vertical-align: middle; }
-    header h2 { display: inline-block; font-size: 1.6rem; }
+    header .logo a { display: flex; align-items: center; font-size: 1.6rem; font-weight: bold; color: #fff; text-decoration: none; }
+    header .logo img { height: 50px; margin-right: 10px; }
     nav ul { list-style: none; display: flex; gap: 1.5rem; flex-wrap: wrap; }
     nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
     nav ul li a:hover { color: #39ff14; }
 
-    /* ✅ Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background: #fff;
-    }
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { width: 25px; height: 3px; background: #fff; }
 
-    /* ✅ Mobile Menu */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0; right: -100%;
-      width: 70%; height: 100%;
-      background: #000;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 2rem;
-      transition: 0.3s;
-      z-index: 1000;
-    }
+    /* Mobile Menu */
+    .mobile-menu { display: none; position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background: #000; flex-direction: column; align-items: flex-start; padding: 2rem; transition: 0.3s; z-index: 1000; }
     .mobile-menu.active { right: 0; display: flex; }
     .mobile-menu ul { list-style: none; padding: 0; margin: 0; width: 100%; }
     .mobile-menu ul li { margin: 1rem 0; }
     .mobile-menu ul li a { color: #fff; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
     .mobile-menu ul li a:hover { color: #39ff14; }
-    .close-btn {
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
-      margin-left: auto;
-      margin-bottom: 2rem;
-    }
+    .close-btn { font-size: 2rem; color: #fff; cursor: pointer; margin-left: auto; margin-bottom: 2rem; }
 
     /* Socials Section */
-    .socials {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .socials h1 {
-      font-size: 2.8rem;
-      color: #39ff14;
-      margin-bottom: 1rem;
-    }
-    .socials p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 3rem;
-    }
+    .socials { padding: 3rem 2rem; text-align: center; }
+    .socials h1 { font-size: 2.8rem; color: #39ff14; margin-bottom: 1rem; }
+    .socials p { font-size: 1.2rem; color: #ccc; margin-bottom: 3rem; }
 
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .social-card {
-      background: #111;
-      padding: 2rem;
-      border-radius: 12px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: center;
-    }
-    .social-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(57,255,20,0.3);
-    }
-    .social-card i {
-      font-size: 3rem;
-      color: #39ff14;
-      margin-bottom: 1rem;
-    }
-    .social-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
-    .social-card a {
-      color: #39ff14;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .social-card a:hover {
-      color: #e63946;
-    }
+    .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; max-width: 1000px; margin: auto; }
+    .social-card { background: #111; padding: 2rem; border-radius: 12px; transition: transform 0.3s, box-shadow 0.3s; text-align: center; }
+    .social-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(57,255,20,0.3); }
+    .social-card i { font-size: 3rem; color: #39ff14; margin-bottom: 1rem; }
+    .social-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .social-card a { color: #39ff14; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    .social-card a:hover { color: #e63946; }
 
-    footer {
-      background: #0d0d0d;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 2rem;
-    }
+    footer { background: #0d0d0d; text-align: center; padding: 1.5rem; margin-top: 2rem; }
 
-    /* ✅ Mobile Responsive */
     @media (max-width: 768px) {
       nav ul { display: none; }
       .hamburger { display: flex; }
@@ -129,9 +57,10 @@
 <body>
   <!-- Header -->
   <header>
-    <div>
-      <img src="getinnn-logo.png" alt="Getinnn Logo" class="logo">
-      <h2>Getinnn Sports</h2>
+    <div class="logo">
+      <a href="index.html">
+        <img src="getinnn-logo.png" alt="Getinnn Logo"> Getinnn Sports
+      </a>
     </div>
     <nav>
       <ul>
@@ -144,7 +73,6 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <!-- ✅ Hamburger Icon -->
     <div class="hamburger" onclick="toggleMenu()">
       <span></span>
       <span></span>
@@ -152,7 +80,7 @@
     </div>
   </header>
 
-  <!-- ✅ Mobile Menu -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <span class="close-btn" onclick="toggleMenu()">&times;</span>
     <ul>
@@ -210,7 +138,6 @@
     <p>&copy; 2025 Getinnn Sports | All Rights Reserved</p>
   </footer>
 
-  <!-- ✅ Script -->
   <script>
     function toggleMenu() {
       document.getElementById("mobileMenu").classList.toggle("active");
