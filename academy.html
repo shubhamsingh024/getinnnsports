@@ -14,7 +14,7 @@
     /* Header */
     header { background: #000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
     header img.logo { height: 50px; margin-right: 10px; vertical-align: middle; }
-    header h2 { display: inline-block; font-size: 1.6rem; }
+    header h2 { display: inline-block; font-size: 1.6rem; margin:0; color:#fff; }
     nav ul { list-style: none; display: flex; gap: 1.5rem; flex-wrap: wrap; }
     nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
     nav ul li a:hover { color: #39ff14; }
@@ -144,8 +144,10 @@
   <!-- Header -->
   <header>
     <div>
-      <img src="getinnn-logo.png" alt="Getinnn Logo" class="logo">
-      <h2>Getinnn Sports</h2>
+      <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
+        <img src="getinnn-logo.png" alt="Getinnn Logo" class="logo">
+        <h2>Getinnn Sports</h2>
+      </a>
     </div>
     <nav>
       <ul>
@@ -237,7 +239,7 @@
     <p>&copy; 2025 Getinnn Sports | All Rights Reserved</p>
   </footer>
 
-  <!-- Slideshow Script -->
+  <!-- Slideshow & Mobile Script -->
   <script>
     let slideIndex = 1;
     showSlides(slideIndex);
@@ -256,10 +258,8 @@
       dots[slideIndex-1].className += " active";
     }
 
-    // Auto Slide
     setInterval(() => { showSlides(++slideIndex); }, 4000);
 
-    // Toggle Mobile Menu
     function toggleMenu() {
       document.getElementById("mobileNav").classList.toggle("active");
     }
