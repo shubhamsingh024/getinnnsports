@@ -7,9 +7,10 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #000;
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* Navbar */
@@ -19,17 +20,21 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   background: #000;
-  position: relative;
-  z-index: 20;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 .navbar .logo {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
+  text-decoration: none;
+  color: #fff;
 }
+.navbar .logo:hover { color: #39ff14; }
 .navbar .logo img {
-  width: 40px;
+  width: 45px;
   margin-right: 10px;
 }
 .navbar .menu {
@@ -39,7 +44,8 @@ body {
 .navbar .menu a {
   color: #fff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  transition: 0.3s;
 }
 .navbar .menu a:hover { color: #39ff14; }
 .hamburger {
@@ -48,22 +54,25 @@ body {
   cursor: pointer;
   color: #39ff14;
 }
+
+/* Mobile Menu */
 .mobile-menu {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 70%;
+  width: 75%;
   height: 100%;
   background: #000;
   display: flex;
   flex-direction: column;
-  padding: 4rem 2rem;
-  transition: right 0.3s ease-in-out;
-  z-index: 30;
+  padding: 5rem 2rem;
+  transition: right 0.4s ease-in-out;
+  z-index: 100;
+  box-shadow: -5px 0 15px rgba(57,255,20,0.2);
 }
 .mobile-menu.active { right: 0; }
 .mobile-menu a {
-  margin: 1rem 0;
+  margin: 1.2rem 0;
   color: #fff;
   font-size: 1.2rem;
   font-weight: bold;
@@ -84,61 +93,40 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4rem 2rem;
+  padding: 4rem 3rem;
   min-height: 90vh;
   position: relative;
   overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  background: url('getinnn-logo.png') no-repeat center;
-  background-size: contain;
-  opacity: 0.07;
-  transform: translate(-50%, -50%);
-  z-index: 1;
 }
 .hero-left {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   position: relative;
   z-index: 2;
 }
+.hero-left img.logo-hero {
+  width: 150px;
+  margin-bottom: 15px;
+  opacity: 0.95;
+}
 .hero-left h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
-}
-.typing {
-  display: inline-block;
-  border-right: 3px solid #39ff14;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 4s steps(20, end) infinite, blink 0.7s infinite;
+  margin: 0.5rem 0;
+  letter-spacing: 2px;
   color: #39ff14;
-  font-weight: bold;
-  font-size: 2.5rem;
-  text-transform: uppercase;
 }
-@keyframes typing {
-  0% { width: 0 }
-  50% { width: 100% }
-  100% { width: 0 }
-}
-@keyframes blink {
-  0%,100% { border-color: transparent }
-  50% { border-color: #39ff14 }
+.hero-left h2 {
+  font-size: 1.2rem;
+  color: #fff;
+  letter-spacing: 1px;
+  margin: 0;
 }
 .quote {
   font-size: 1rem;
-  color: #fff;
+  color: #ccc;
   margin-top: 0.8rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -154,11 +142,12 @@ body {
 }
 .slider {
   width: 100%;
-  max-width: 500px;
+  max-width: 520px;
   aspect-ratio: 4/3;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(57,255,20,0.5);
 }
 .slides {
   display: flex;
@@ -171,6 +160,15 @@ body {
   flex-shrink: 0;
 }
 
+/* Typing Animation Loop */
+.typing {
+  border-right: 3px solid #39ff14;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  color: #39ff14;
+}
+
 /* Section Divider */
 .section-divider {
   width: 100%;
@@ -179,9 +177,9 @@ body {
   box-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
 }
 
-/* What We Do */
+/* What We Do Section */
 .what-we-do {
-  padding: 3rem 2rem;
+  padding: 3rem 1.5rem;
   text-align: center;
   background: #000;
 }
@@ -191,11 +189,18 @@ body {
   color: #39ff14;
   margin-bottom: 2rem;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
+.what-we-do h2::before { content: "⚡"; }
+
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 850px;
   margin: auto;
   overflow: hidden;
 }
@@ -212,7 +217,10 @@ body {
   text-align: center;
   padding: 1rem;
   box-sizing: border-box;
+  margin-right: 10px;
+  transition: transform 0.3s;
 }
+.card:hover { transform: scale(1.02); }
 .card img {
   width: 100%;
   height: 200px;
@@ -222,7 +230,8 @@ body {
 }
 .card h3 { color: #39ff14; margin-bottom: 0.5rem; }
 .card p { color: #ccc; font-size: 0.9rem; }
-.prev,.next {
+
+.prev, .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -230,84 +239,72 @@ body {
   border: none;
   color: #39ff14;
   font-size: 2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   cursor: pointer;
   border-radius: 50%;
   z-index: 10;
+  transition: 0.3s;
 }
 .prev { left: 10px; }
 .next { right: 10px; }
-.prev:hover,.next:hover { background: #39ff14; color: #000; }
+.prev:hover, .next:hover { background: #39ff14; color: #000; }
 
+/* Footer */
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 1.2rem;
   background: #000;
   font-size: 0.9rem;
   border-top: 1px solid #39ff14;
 }
 
-/* Mobile */
+/* MOBILE VIEW */
 @media (max-width: 768px) {
-  /* Hide desktop background logo on mobile */
-  .hero::before { display: none; }
-
+  .navbar { padding: 0.8rem 1.2rem; }
+  .navbar .logo img { width: 38px; }
+  .navbar .logo { font-size: 1.1rem; }
   .navbar .menu { display: none; }
   .hamburger { display: block; }
 
-  /* Hero - column layout */
   .hero {
     flex-direction: column;
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 3rem 1.2rem;
     min-height: auto;
   }
-  .hero-left {
-    align-items: center;
-    position: relative;
-    z-index: 2;
+  .hero-left { align-items: center; margin-bottom: 2rem; }
+  .hero-left img.logo-hero { width: 125px; margin-bottom: 0.6rem; }
+  .hero-left h2 { font-size: 1rem; }
+  .hero-left h1 { font-size: 2.3rem; margin: 0.3rem 0; }
+  .quote { font-size: 0.9rem; }
+
+  .slider { width: 100%; height: 250px; border-radius: 10px; }
+
+  .what-we-do { padding: 2rem 1rem; }
+  .what-we-do h2 { font-size: 1.8rem; }
+
+  .card { flex: 0 0 100%; margin: 0; border-radius: 12px; }
+  .card img { height: 180px; }
+
+  .prev, .next {
+    display: block;
+    top: 45%;
+    background: rgba(0,0,0,0.7);
+    font-size: 1.6rem;
+    padding: 0.3rem 0.7rem;
   }
 
-  /* Mobile background logo only */
-  .hero-left::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 250px;
-    height: 250px;
-    background: url('getinnn-logo.png') no-repeat center;
-    background-size: contain;
-    opacity: 0.12;
-    transform: translate(-50%, -50%);
-    z-index: -1; /* behind text */
-  }
-
-  .hero-left h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-  .typing { font-size: 2rem; }
-  .quote { font-size: 1rem; }
-
-  /* Slider slightly lower */
-  .hero-right {
-    margin-top: 3rem;
-    width: 100%;
-    max-width: 500px;
-    z-index: 2;
-  }
-  .slider { height: 280px; }
-
-  /* What We Do - show one card only */
-  .carousel { flex-wrap: nowrap; overflow: hidden; }
-  .card img { height: 160px; }
+  footer { font-size: 0.8rem; padding: 1rem; }
 }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
-  <div class="logo">
-    <img src="getinnn-logo.png" alt="Logo" /> Getinnn Sports
-  </div>
+  <a href="index.html" class="logo">
+    <img src="getinnn-logo.png" alt="Logo" /> GET INNN SPORTS
+  </a>
   <div class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -320,6 +317,7 @@ footer {
   <div class="hamburger" id="hamburger">&#9776;</div>
 </nav>
 
+<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="close-btn" id="closeBtn">&times;</div>
   <a href="index.html">Home</a>
@@ -331,11 +329,13 @@ footer {
   <a href="contact.html">Contact</a>
 </div>
 
+<!-- Hero Section -->
 <section class="hero">
   <div class="hero-left">
-    <h1>WELCOME TO</h1>
-    <div class="typing">GET INNN SPORTS</div>
-    <p class="quote">Sports Management Solutions</p>
+    <img src="getinnn-logo.png" alt="Logo" class="logo-hero">
+    <h2>WELCOME TO</h2>
+    <h1 class="typing" id="typing"></h1>
+    <p class="quote">SPORTS MANAGEMENT SOLUTIONS</p>
   </div>
   <div class="hero-right">
     <div class="slider">
@@ -352,8 +352,9 @@ footer {
 
 <div class="section-divider"></div>
 
+<!-- What We Do Section -->
 <section class="what-we-do">
-  <h2>⚡ What We Do</h2>
+  <h2>WHAT WE DO</h2>
   <div class="carousel-container">
     <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
     <div class="carousel" id="carousel">
@@ -388,30 +389,59 @@ footer {
 // Hero slider
 const slidesContainer = document.getElementById('slides');
 const slides = slidesContainer.querySelectorAll('img');
-let currentIndex = 0;
+let currentIndexSlide = 0;
 setInterval(() => {
-  currentIndex = (currentIndex + 1) % slides.length;
-  slidesContainer.style.transform = `translateX(-${currentIndex*100}%)`;
-},5000);
+  currentIndexSlide = (currentIndexSlide + 1) % slides.length;
+  slidesContainer.style.transform = `translateX(-${currentIndexSlide * 100}%)`;
+}, 4000);
 
-// What We Do carousel
+// Carousel
 const carousel = document.getElementById('carousel');
 const cards = document.querySelectorAll('.card');
 let index = 0;
-function moveSlide(step){
+function moveSlide(step) {
   index += step;
-  if(index<0) index=cards.length-1;
-  if(index>=cards.length) index=0;
-  carousel.style.transform = `translateX(-${index*100}%)`;
+  if (index < 0) index = cards.length - 1;
+  if (index >= cards.length) index = 0;
+  carousel.style.transform = `translateX(-${index * 100}%)`;
 }
 
-// Mobile menu
+// Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const closeBtn = document.getElementById('closeBtn');
-hamburger.addEventListener('click', ()=> mobileMenu.classList.add('active'));
-closeBtn.addEventListener('click', ()=> mobileMenu.classList.remove('active'));
-</script>
+hamburger.addEventListener('click', () => mobileMenu.classList.add('active'));
+closeBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
 
+// Typing animation with 2s pause before delete
+const typingText = "GET INNN SPORTS";
+const typingElement = document.getElementById("typing");
+let charIndex = 0;
+let deleting = false;
+
+function typeLoop() {
+  if (!deleting && charIndex <= typingText.length) {
+    typingElement.textContent = typingText.substring(0, charIndex++);
+  } else if (deleting && charIndex >= 0) {
+    typingElement.textContent = typingText.substring(0, charIndex--);
+  }
+
+  // Pause 2s when finished typing
+  if (charIndex === typingText.length) {
+    setTimeout(() => { deleting = true; }, 2000);
+  }
+
+  // Restart after deleting
+  if (deleting && charIndex < 0) {
+    deleting = false;
+    charIndex = 0;
+  }
+
+  const speed = deleting ? 80 : 120;
+  setTimeout(typeLoop, speed);
+}
+
+typeLoop();
+</script>
 </body>
 </html>
