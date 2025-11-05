@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Points Table | Getinnn Sports</title>
+  <link rel="icon" type="image/x-icon" href="getinnn-logo.png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #000;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .navbar .logo:hover {
+      color: #39ff14;
+    }
+
+    .navbar .logo img {
+      width: 45px;
+      margin-right: 10px;
+    }
+
+    .navbar .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .navbar .menu a:hover,
+    .navbar .menu a.active {
+      color: #39ff14;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #39ff14;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      padding: 5rem 2rem;
+      transition: right 0.4s ease-in-out;
+      z-index: 100;
+      box-shadow: -5px 0 15px rgba(57, 255, 20, 0.2);
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu a {
+      margin: 1.2rem 0;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .mobile-menu a:hover {
+      color: #39ff14;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #39ff14;
+    }
+
+    /* Page Header */
+    section.page-header {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    section.page-header h1 {
+      color: #39ff14;
+      font-size: 2.5rem;
+    }
+
+    section.page-header p {
+      color: #ccc;
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: #39ff14;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #39ff14;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Points Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(57,255,20,0.2);
+      margin-bottom: 2rem;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      text-align: center;
+    }
+
+    th {
+      background: #39ff14;
+      color: #000;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    tr:nth-child(even) {
+      background: #1a1a1a;
+    }
+
+    tr:hover {
+      background: #222;
+      transition: 0.3s;
+    }
+
+    td img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    td span {
+      vertical-align: middle;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #39ff14;
+      margin-top: 3rem;
+    }
+
+    /* MOBILE VIEW */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.8rem 1.2rem;
+      }
+
+      .navbar .menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      section h2 {
+        font-size: 1.6rem;
+      }
+
+      table th, table td {
+        font-size: 0.8rem;
+        padding: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="getinnn-logo.png" alt="Logo" /> GET INNN SPORTS
+    </a>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="academy.html">Academy</a>
+      <a href="infra.html">Infrastructure</a>
+      <a href="socials.html">Socials</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="close-btn" id="closeBtn">&times;</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="academy.html">Academy</a>
+    <a href="infra.html">Infrastructure</a>
+    <a href="socials.html">Socials</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>All Points Tables</h1>
+    <p>Updated standings across all categories</p>
+  </section>
+
+  <!-- Points Tables -->
+  <section id="u14">
+    <h2>🏟️ Under-14 Points Table</h2>
+    <table>
+      <tr><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+      <tr><td><img src="team1.png"><span>Team A</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>6</td><td>2</td><td>+4</td><td>7</td></tr>
+      <tr><td><img src="team2.png"><span>Team B</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>3</td><td>3</td><td>0</td><td>4</td></tr>
+    </table>
+  </section>
+
+  <section id="u16">
+    <h2>⚽ Under-16 Points Table</h2>
+    <table>
+      <tr><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+      <tr><td><img src="u16a.png"><span>Alpha FC</span></td><td>3</td><td>3</td><td>0</td><td>0</td><td>7</td><td>1</td><td>+6</td><td>9</td></tr>
+      <tr><td><img src="u16b.png"><span>Beta FC</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>3</td><td>4</td><td>-1</td><td>4</td></tr>
+    </table>
+  </section>
+
+  <section id="u18">
+    <h2>⚡ Under-18 Points Table</h2>
+    <table>
+      <tr><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+      <tr><td><img src="u18a.png"><span>Falcons</span></td><td>3</td><td>2</td><td>0</td><td>1</td><td>5</td><td>3</td><td>+2</td><td>6</td></tr>
+      <tr><td><img src="u18b.png"><span>Warriors</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>3</td><td>4</td><td>-1</td><td>4</td></tr>
+    </table>
+  </section>
+
+  <section id="mens">
+    <h2>🔥 Men's Open Points Table</h2>
+    <table>
+      <tr><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+      <tr><td><img src="m1.png"><span>City FC</span></td><td>4</td><td>3</td><td>0</td><td>1</td><td>8</td><td>3</td><td>+5</td><td>9</td></tr>
+      <tr><td><img src="m2.png"><span>Metro FC</span></td><td>4</td><td>2</td><td>1</td><td>1</td><td>6</td><td>4</td><td>+2</td><td>7</td></tr>
+    </table>
+  </section>
+
+  <section id="womens">
+    <h2>👑 Women's Open Points Table</h2>
+    <table>
+      <tr><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+      <tr><td><img src="w1.png"><span>Queens FC</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>5</td><td>2</td><td>+3</td><td>7</td></tr>
+      <tr><td><img src="w2.png"><span>Lions FC</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>3</td><td>3</td><td>0</td><td>4</td></tr>
+    </table>
+  </section>
+
+  <section id="veterans">
+    <h2>🏅 Veterans Points Table</h2>
+    <table>
+      <tr><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+      <tr><td><img src="v1.png"><span>Legends</span></td><td>3</td><td>2</td><td>0</td><td>1</td><td>4</td><td>2</td><td>+2</td><td>6</td></tr>
+      <tr><td><img src="v2.png"><span>Classic FC</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>3</td><td>3</td><td>0</td><td>4</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Getinnn Sports | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeBtn');
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('active'));
+    closeBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+  </script>
+</body>
+</html>
