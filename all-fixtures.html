@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Scores | Getinnn Sports</title>
+  <link rel="icon" type="image/x-icon" href="getinnn-logo.png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #000;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .navbar .logo:hover {
+      color: #39ff14;
+    }
+
+    .navbar .logo img {
+      width: 45px;
+      margin-right: 10px;
+    }
+
+    .navbar .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .navbar .menu a:hover,
+    .navbar .menu a.active {
+      color: #39ff14;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #39ff14;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      padding: 5rem 2rem;
+      transition: right 0.4s ease-in-out;
+      z-index: 100;
+      box-shadow: -5px 0 15px rgba(57, 255, 20, 0.2);
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu a {
+      margin: 1.2rem 0;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .mobile-menu a:hover {
+      color: #39ff14;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #39ff14;
+    }
+
+    /* Page Title */
+    section.page-header {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    section.page-header h1 {
+      color: #39ff14;
+      font-size: 2.5rem;
+    }
+
+    section.page-header p {
+      color: #ccc;
+    }
+
+    /* Category Sections */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: #39ff14;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #39ff14;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Score Cards */
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .score-card {
+      background: #111;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .score-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .teams {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 1rem;
+    }
+
+    .teams img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .teams span {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .score {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #39ff14;
+      margin: 0.5rem 0;
+    }
+
+    .score-card p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #39ff14;
+      margin-top: 3rem;
+    }
+
+    /* MOBILE VIEW */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.8rem 1.2rem;
+      }
+
+      .navbar .menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      section h2 {
+        font-size: 1.6rem;
+      }
+
+      .score-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="getinnn-logo.png" alt="Logo" /> GET INNN SPORTS
+    </a>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="academy.html">Academy</a>
+      <a href="infra.html">Infrastructure</a>
+      <a href="socials.html">Socials</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="close-btn" id="closeBtn">&times;</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="academy.html">Academy</a>
+    <a href="infra.html">Infrastructure</a>
+    <a href="socials.html">Socials</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>All Scores</h1>
+    <p>Match results across all categories</p>
+  </section>
+
+  <!-- Category Sections -->
+  <section id="u14">
+    <h2>🏟️ Under-14 Results</h2>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="teams">
+          <img src="team1.png"><span>Team A</span>
+          <span>vs</span>
+          <img src="team2.png"><span>Team B</span>
+        </div>
+        <div class="score">2 - 1</div>
+        <p>📅 1 Nov 2025 | 📍 Getinnn Arena</p>
+      </div>
+      <div class="score-card">
+        <div class="teams">
+          <img src="team3.png"><span>Team C</span>
+          <span>vs</span>
+          <img src="team4.png"><span>Team D</span>
+        </div>
+        <div class="score">0 - 0</div>
+        <p>📅 3 Nov 2025 | 📍 Mira Turf</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="u16">
+    <h2>⚽ Under-16 Results</h2>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="teams">
+          <img src="u16a.png"><span>Alpha FC</span>
+          <span>vs</span>
+          <img src="u16b.png"><span>Beta FC</span>
+        </div>
+        <div class="score">3 - 2</div>
+        <p>📅 2 Nov 2025 | 📍 Getinnn Arena</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="u18">
+    <h2>⚡ Under-18 Results</h2>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="teams">
+          <img src="u18a.png"><span>Falcons</span>
+          <span>vs</span>
+          <img src="u18b.png"><span>Warriors</span>
+        </div>
+        <div class="score">4 - 1</div>
+        <p>📅 4 Nov 2025 | 📍 Getinnn Ground</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="mens">
+    <h2>🔥 Men’s Open Results</h2>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="teams">
+          <img src="m1.png"><span>City FC</span>
+          <span>vs</span>
+          <img src="m2.png"><span>Metro FC</span>
+        </div>
+        <div class="score">1 - 2</div>
+        <p>📅 5 Nov 2025 | 📍 Mira Stadium</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="womens">
+    <h2>👑 Women’s Open Results</h2>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="teams">
+          <img src="w1.png"><span>Queens FC</span>
+          <span>vs</span>
+          <img src="w2.png"><span>Lions FC</span>
+        </div>
+        <div class="score">3 - 3</div>
+        <p>📅 6 Nov 2025 | 📍 Getinnn Arena</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="veterans">
+    <h2>🏅 Veterans Results</h2>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="teams">
+          <img src="v1.png"><span>Legends</span>
+          <span>vs</span>
+          <img src="v2.png"><span>Classic FC</span>
+        </div>
+        <div class="score">2 - 0</div>
+        <p>📅 7 Nov 2025 | 📍 Mira Turf</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Getinnn Sports | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeBtn');
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('active'));
+    closeBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getinnn Sports | Fixtures & Results</title>
+  <link rel="icon" type="image/x-icon" href="getinnn-logo.png">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    /* Header */
+    header {
+      background: #000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    header img.logo {
+      height: 50px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    header h2 {
+      display: inline-block;
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav ul li a:hover {
+      color: #39ff14;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100%;
+      background: #000;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .mobile-menu.active {
+      right: 0;
+      display: flex;
+    }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .mobile-menu ul li {
+      margin: 1rem 0;
+    }
+    .mobile-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .mobile-menu ul li a:hover {
+      color: #39ff14;
+    }
+    .close-btn {
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      margin-left: auto;
+      margin-bottom: 2rem;
+    }
+
+    /* Section Titles */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 2.2rem;
+      color: #39ff14;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Grid & Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #111;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+      overflow: hidden;
+      text-align: center;
+      padding: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .team-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .team-logos img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .vs {
+      font-weight: bold;
+      color: #39ff14;
+    }
+    .match-info {
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    .score {
+      font-size: 1.4rem;
+      color: #fff;
+      margin: 0.5rem 0;
+    }
+
+    .show-more {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .show-more a {
+      color: #39ff14;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .show-more a:hover {
+      text-decoration: underline;
+    }
+
+    /* Points Table Button */
+    .points-btn {
+      display: block;
+      text-align: center;
+      margin: 3rem auto;
+      padding: 0.8rem 2rem;
+      background: #39ff14;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      width: fit-content;
+      transition: 0.3s;
+    }
+    .points-btn:hover {
+      background: #57ff3c;
+    }
+
+    footer {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>
+      <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
+        <img src="getinnn-logo.png" alt="Getinnn Logo" class="logo">
+        <h2>Getinnn Sports</h2>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="academy.html">Academy</a></li>
+        <li><a href="infra.html">Infrastructure</a></li>
+        <li><a href="socials.html">Socials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="academy.html">Academy</a></li>
+      <li><a href="infra.html">Infrastructure</a></li>
+      <li><a href="socials.html">Socials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Upcoming Fixtures -->
+  <section>
+    <h2>⚽ Upcoming Fixtures</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="team-logos">
+          <img src="team1.png" alt="Team 1">
+          <span class="vs">VS</span>
+          <img src="team2.png" alt="Team 2">
+        </div>
+        <p class="match-info">📅 Nov 10, 2025 | 📍 Getinnn Arena</p>
+      </div>
+
+      <div class="card">
+        <div class="team-logos">
+          <img src="team3.png" alt="Team 3">
+          <span class="vs">VS</span>
+          <img src="team4.png" alt="Team 4">
+        </div>
+        <p class="match-info">📅 Nov 12, 2025 | 📍 Mira Road Turf</p>
+      </div>
+
+      <div class="card">
+        <div class="team-logos">
+          <img src="team5.png" alt="Team 5">
+          <span class="vs">VS</span>
+          <img src="team6.png" alt="Team 6">
+        </div>
+        <p class="match-info">📅 Nov 14, 2025 | 📍 Getinnn Arena</p>
+      </div>
+    </div>
+    <div class="show-more"><a href="all-fixtures.html">Show More →</a></div>
+  </section>
+
+  <!-- Recent Results -->
+  <section>
+    <h2>🏆 Recent Results</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="team-logos">
+          <img src="team1.png" alt="Team 1">
+          <span class="vs">2 - 1</span>
+          <img src="team2.png" alt="Team 2">
+        </div>
+        <p class="match-info">📅 Nov 3, 2025 | 📍 Getinnn Arena</p>
+      </div>
+
+      <div class="card">
+        <div class="team-logos">
+          <img src="team3.png" alt="Team 3">
+          <span class="vs">0 - 0</span>
+          <img src="team4.png" alt="Team 4">
+        </div>
+        <p class="match-info">📅 Nov 4, 2025 | 📍 Mira Road Turf</p>
+      </div>
+
+      <div class="card">
+        <div class="team-logos">
+          <img src="team5.png" alt="Team 5">
+          <span class="vs">3 - 2</span>
+          <img src="team6.png" alt="Team 6">
+        </div>
+        <p class="match-info">📅 Nov 6, 2025 | 📍 Getinnn Arena</p>
+      </div>
+    </div>
+    <div class="show-more"><a href="all-scores.html">Show More →</a></div>
+  </section>
+
+  <!-- Points Table Button -->
+  <a href="points-table.html" class="points-btn">👉 View Full Points Table</a>
+
+  <footer>
+    <p>&copy; 2025 Getinnn Sports | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
