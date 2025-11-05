@@ -1,167 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="getinnn-logo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getinnn Sports | Events</title>
+  <link rel="icon" type="image/x-icon" href="getinnn-logo.png">
   <style>
     /* ---------- Base ---------- */
-    :root{
-      --bg:#0a0a0a;
-      --card:#111;
-      --accent:#39ff14;
-      --muted:#ccc;
-      --danger:#e63946;
+    :root {
+      --bg: #0a0a0a;
+      --card: #111;
+      --accent: #39ff14;
+      --muted: #ccc;
+      --danger: #e63946;
     }
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg);
       color: #fff;
-      -webkit-font-smoothing:antialiased;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ---------- Navbar ---------- */
     .navbar {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:1rem 2rem;
-      background:#000;
-      position:sticky;
-      top:0;
-      z-index:50;
-      border-bottom:1px solid rgba(255,255,255,0.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #000;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
     }
-    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff; }
-    .brand img.logo { width:45px; height:auto; display:block; }
-    .brand h2 { margin:0; font-size:1.4rem; color:#fff; }
-    nav ul { display:flex; gap:1.25rem; list-style:none; margin:0; padding:0; align-items:center; }
-    nav a { color:#fff; text-decoration:none; font-weight:600; }
-    nav a:hover { color:var(--accent); }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+    .brand img.logo { width: 45px; display: block; }
+    .brand h2 { margin: 0; font-size: 1.4rem; }
+    nav ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; align-items: center; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; }
+    nav a:hover { color: var(--accent); }
 
     .hamburger {
-      display:none;
-      font-size:1.9rem;
-      cursor:pointer;
-      color:var(--accent);
-      background:transparent;
-      border:none;
+      display: none;
+      font-size: 1.9rem;
+      cursor: pointer;
+      color: var(--accent);
+      background: transparent;
+      border: none;
     }
 
-    /* ---------- Mobile menu (slide-in) ---------- */
+    /* ---------- Mobile menu ---------- */
     .mobile-menu {
-      position:fixed;
-      top:0;
-      right:-100%;
-      width:75%;
-      max-width:360px;
-      height:100%;
-      background:#000;
-      display:flex;
-      flex-direction:column;
-      padding:4rem 1.5rem 1.5rem;
-      transition:right .35s ease;
-      z-index:100;
-      box-shadow:-6px 0 20px rgba(57,255,20,0.15);
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      max-width: 360px;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      padding: 4rem 1.5rem 1.5rem;
+      transition: right .35s ease;
+      z-index: 100;
+      box-shadow: -6px 0 20px rgba(57,255,20,0.15);
     }
-    .mobile-menu.active { right:0; }
-    .mobile-menu .close-btn { position:absolute; top:1rem; right:1rem; font-size:2rem; color:var(--accent); cursor:pointer; }
-    .mobile-menu a { display:block; color:#fff; text-decoration:none; font-size:1.15rem; font-weight:700; margin:1rem 0; }
-    .mobile-menu a:hover{ color:var(--accent); }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--accent); cursor: pointer; }
+    .mobile-menu a { display: block; color: #fff; text-decoration: none; font-size: 1.15rem; font-weight: 700; margin: 1rem 0; }
+    .mobile-menu a:hover { color: var(--accent); }
 
     /* ---------- Hero ---------- */
     .events-hero {
       background: url("events-banner.jpg") center/cover no-repeat;
-      text-align:center;
-      padding:4rem 2rem;
-      position:relative;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
     }
     .events-hero::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.6); }
-    .events-hero .inner { position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:0 16px; }
-    .events-hero h1 { margin:0; font-size:3rem; color:var(--accent); }
-    .events-hero p { margin:8px 0 0; color:var(--muted); font-size:1.05rem; }
+    .events-hero .inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .events-hero h1 { margin:0; font-size: 3rem; color: var(--accent); }
+    .events-hero p { margin: 8px 0 0; color: var(--muted); font-size: 1.05rem; }
 
     /* ---------- Events section & cards ---------- */
-    .events-section { padding:3rem 2rem; max-width:1100px; margin:0 auto; }
-    .events-section h2 { color:var(--accent); font-size:2.2rem; margin-bottom:1.5rem; text-align:center; }
+    .events-section { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .events-section h2 { color: var(--accent); font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center; }
 
     .events-grid {
-      display:grid;
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap:1.5rem;
+      gap: 1.5rem;
     }
 
     .event-card {
-      background:var(--card);
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 6px 20px rgba(57,255,20,0.06);
-      transition:transform .25s ease, box-shadow .25s ease;
-      display:flex;
-      flex-direction:column;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(57,255,20,0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+      display: flex;
+      flex-direction: column;
     }
-    .event-card:hover { transform:translateY(-6px); box-shadow:0 12px 30px rgba(57,255,20,0.09); }
+    .event-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(57,255,20,0.09); }
 
-    .event-card img { width:100%; height:180px; object-fit:cover; display:block; }
-    .event-content { padding:1.5rem; display:flex; flex-direction:column; gap:10px; flex:1; }
-    .event-content h3 { margin:0; font-size:1.45rem; color:#fff; }
-    .event-content p { margin:0; color:var(--muted); font-size:0.95rem; }
-    .event-content .date { color:var(--accent); font-weight:700; }
+    .event-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .event-content { padding: 1.5rem; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .event-content h3 { margin: 0; font-size: 1.45rem; color: #fff; }
+    .event-content p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .event-content .date { color: var(--accent); font-weight: 700; }
 
     /* Buttons group */
-    .btn-group { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
     .btn {
-      display:inline-block;
-      padding:0.7rem 1.3rem;
-      border-radius:8px;
-      font-weight:700;
-      text-decoration:none;
+      display: inline-block;
+      padding: 0.7rem 1.3rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
       transition: all .18s ease;
-      cursor:pointer;
-      text-align:center;
+      cursor: pointer;
+      text-align: center;
+      background: var(--danger);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(230,57,70,0.07);
     }
-    .btn-contact { background:var(--danger); color:#fff; box-shadow:0 6px 18px rgba(230,57,70,0.07); }
-    .btn-contact:hover { background:#ff4d5a; box-shadow:0 10px 22px rgba(230,57,70,0.12); }
-
-    .btn-points { background:var(--accent); color:#000; box-shadow:0 6px 18px rgba(57,255,20,0.06); }
-    .btn-points:hover { background:#52ff33; box-shadow:0 10px 22px rgba(57,255,20,0.12); }
+    .btn:hover {
+      background: #ff4d5a;
+      box-shadow: 0 10px 22px rgba(230,57,70,0.12);
+    }
 
     /* Footer */
-    footer { background:#070707; text-align:center; padding:1.2rem; margin-top:2rem; color:#c7d0d4; border-top:1px solid rgba(57,255,20,0.06); }
+    footer { background: #070707; text-align: center; padding: 1.2rem; margin-top: 2rem; color: #c7d0d4; border-top: 1px solid rgba(57,255,20,0.06); }
 
-    /* ---------- Responsive Tweaks (mobile) ---------- */
+    /* ---------- Responsive Tweaks ---------- */
     @media (max-width: 980px) {
-      .events-hero { padding:3rem 1rem; }
-      .events-hero h1 { font-size:2.4rem; }
-      .events-hero p { font-size:1rem; }
+      .events-hero { padding: 3rem 1rem; }
+      .events-hero h1 { font-size: 2.4rem; }
+      .events-hero p { font-size: 1rem; }
     }
 
     @media (max-width: 768px) {
-      nav ul { display:none; }
-      .hamburger { display:block; }
+      nav ul { display: none; }
+      .hamburger { display: block; }
 
-      /* hero stacks */
-      .events-hero { padding:2.2rem 1rem; text-align:center; }
-      .events-hero h1 { font-size:2rem; margin-bottom:6px; }
-      .events-hero p { font-size:0.95rem; }
+      .events-hero { padding: 2.2rem 1rem; text-align: center; }
+      .events-hero h1 { font-size: 2rem; margin-bottom: 6px; }
+      .events-hero p { font-size: 0.95rem; }
 
-      /* event card spacing and image */
-      .event-card img { height:160px; }
+      .event-card img { height: 160px; }
+      .btn-group { width: 100%; justify-content: center; }
+      .btn { width: calc(50% - 8px); }
+    }
 
-      /* button behavior */
-      .btn-group { width:100%; justify-content:center; }
-      .btn { width: calc(50% - 8px); } /* two buttons side by side on mobile, with gap */
-      @media (max-width:420px) {
-        .btn { width:100%; } /* stack on very small screens */
-      }
+    @media (max-width: 420px) {
+      .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <!-- NAVBAR (improved responsive) -->
+  <!-- Navbar -->
   <nav class="navbar" role="navigation">
     <a class="brand" href="index.html">
       <img src="getinnn-logo.png" alt="logo" class="logo">
@@ -195,7 +194,7 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="events-hero" aria-labelledby="events-title">
     <div class="inner">
       <h1 id="events-title">Upcoming & Past Events</h1>
@@ -206,7 +205,6 @@
   <!-- Upcoming Events -->
   <section class="events-section" aria-labelledby="upcoming-title">
     <h2 id="upcoming-title">⚽ Upcoming Events</h2>
-
     <div class="events-grid">
       <div class="event-card" role="article">
         <img src="upcoming1.jpg" alt="MBCL Tournament Poster">
@@ -214,10 +212,9 @@
           <h3>MBCL Tournament</h3>
           <p class="date">📅 November, 2025 | 📍 Mira Road Stadium</p>
           <p>Join us for an action-packed tournament featuring top local teams competing for glory.</p>
-
           <div class="btn-group" role="group" aria-label="Event actions">
-            <a class="btn btn-contact" href="contact.html">Contact Now</a>
-            <a class="btn btn-points" href="fixturesandpoints.html">Fixtures & Points Table</a>
+            <a class="btn" href="contact.html">Contact Now</a>
+            <a class="btn" href="fixturesandpoints.html">Fixtures & Points Table</a>
           </div>
         </div>
       </div>
@@ -262,15 +259,15 @@
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.add('active');
       mobileMenu.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden'; // prevent background scroll
+      document.body.style.overflow = 'hidden';
     });
+
     closeBtn.addEventListener('click', () => {
       mobileMenu.classList.remove('active');
       mobileMenu.setAttribute('aria-hidden','true');
-      document.body.style.overflow = ''; // restore scroll
+      document.body.style.overflow = '';
     });
 
-    // close when clicking outside on narrow screens
     document.addEventListener('click', (e) => {
       if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
         mobileMenu.classList.remove('active');
@@ -279,7 +276,6 @@
       }
     });
 
-    // handle Escape to close
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
         mobileMenu.classList.remove('active');
