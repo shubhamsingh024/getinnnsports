@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Scores | Getinnn Sports</title>
+  <title>All Fixtures | Getinnn Sports</title>
   <link rel="icon" type="image/x-icon" href="getinnn-logo.png" />
   <style>
     body {
@@ -23,7 +23,8 @@
       background: #000;
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
+      box-shadow: 0 2px 15px rgba(57, 255, 20, 0.1);
     }
 
     .navbar .logo {
@@ -33,6 +34,7 @@
       font-weight: bold;
       text-decoration: none;
       color: #fff;
+      transition: 0.3s;
     }
 
     .navbar .logo:hover {
@@ -61,11 +63,13 @@
       color: #39ff14;
     }
 
+    /* Hamburger Button */
     .hamburger {
       display: none;
       font-size: 2rem;
       cursor: pointer;
       color: #39ff14;
+      transition: 0.3s;
     }
 
     /* Mobile Menu */
@@ -80,7 +84,7 @@
       flex-direction: column;
       padding: 5rem 2rem;
       transition: right 0.4s ease-in-out;
-      z-index: 100;
+      z-index: 200;
       box-shadow: -5px 0 15px rgba(57, 255, 20, 0.2);
     }
 
@@ -94,6 +98,7 @@
       font-size: 1.2rem;
       font-weight: bold;
       text-decoration: none;
+      transition: 0.3s;
     }
 
     .mobile-menu a:hover {
@@ -109,7 +114,7 @@
       color: #39ff14;
     }
 
-    /* Page Title */
+    /* Page Header */
     section.page-header {
       text-align: center;
       margin-top: 2rem;
@@ -124,7 +129,7 @@
       color: #ccc;
     }
 
-    /* Category Sections */
+    /* Section */
     section {
       padding: 3rem 2rem;
       max-width: 1100px;
@@ -140,23 +145,23 @@
       padding-bottom: 0.5rem;
     }
 
-    /* Score Cards */
-    .score-grid {
+    /* Fixture Cards */
+    .fixture-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    .score-card {
+    .fixture-card {
       background: #111;
       border-radius: 12px;
       padding: 1rem;
-      box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+      box-shadow: 0 0 15px rgba(57,255,20,0.2);
       text-align: center;
       transition: transform 0.3s;
     }
 
-    .score-card:hover {
+    .fixture-card:hover {
       transform: translateY(-5px);
     }
 
@@ -164,8 +169,8 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      gap: 5px;
       margin-bottom: 1rem;
+      gap: 5px;
     }
 
     .teams img {
@@ -181,14 +186,7 @@
       color: #fff;
     }
 
-    .score {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #39ff14;
-      margin: 0.5rem 0;
-    }
-
-    .score-card p {
+    .fixture-card p {
       font-size: 0.9rem;
       color: #ccc;
     }
@@ -201,7 +199,7 @@
       margin-top: 3rem;
     }
 
-    /* MOBILE VIEW */
+    /* Mobile View */
     @media (max-width: 768px) {
       .navbar {
         padding: 0.8rem 1.2rem;
@@ -223,7 +221,7 @@
         font-size: 1.6rem;
       }
 
-      .score-grid {
+      .fixture-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -231,7 +229,7 @@
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- ✅ Navbar -->
   <nav class="navbar">
     <a href="index.html" class="logo">
       <img src="getinnn-logo.png" alt="Logo" /> GET INNN SPORTS
@@ -248,7 +246,7 @@
     <div class="hamburger" id="hamburger">&#9776;</div>
   </nav>
 
-  <!-- Mobile Menu -->
+  <!-- ✅ Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="close-btn" id="closeBtn">&times;</div>
     <a href="index.html">Home</a>
@@ -262,106 +260,99 @@
 
   <!-- Page Header -->
   <section class="page-header">
-    <h1>All Scores</h1>
-    <p>Match results across all categories</p>
+    <h1>All Fixtures</h1>
+    <p>Upcoming matches across all categories</p>
   </section>
 
   <!-- Category Sections -->
   <section id="u14">
-    <h2>🏟️ Under-14 Results</h2>
-    <div class="score-grid">
-      <div class="score-card">
+    <h2>🏟️ Under-14 Fixtures</h2>
+    <div class="fixture-grid">
+      <div class="fixture-card">
         <div class="teams">
           <img src="team1.png"><span>Team A</span>
           <span>vs</span>
           <img src="team2.png"><span>Team B</span>
         </div>
-        <div class="score">2 - 1</div>
-        <p>📅 1 Nov 2025 | 📍 Getinnn Arena</p>
+        <p>📅 12 Nov 2025 | ⏰ 5:00 PM | 📍 Getinnn Arena</p>
       </div>
-      <div class="score-card">
+      <div class="fixture-card">
         <div class="teams">
           <img src="team3.png"><span>Team C</span>
           <span>vs</span>
           <img src="team4.png"><span>Team D</span>
         </div>
-        <div class="score">0 - 0</div>
-        <p>📅 3 Nov 2025 | 📍 Mira Turf</p>
+        <p>📅 14 Nov 2025 | ⏰ 4:30 PM | 📍 Mira Turf</p>
       </div>
     </div>
   </section>
 
   <section id="u16">
-    <h2>⚽ Under-16 Results</h2>
-    <div class="score-grid">
-      <div class="score-card">
+    <h2>⚽ Under-16 Fixtures</h2>
+    <div class="fixture-grid">
+      <div class="fixture-card">
         <div class="teams">
           <img src="u16a.png"><span>Alpha FC</span>
           <span>vs</span>
           <img src="u16b.png"><span>Beta FC</span>
         </div>
-        <div class="score">3 - 2</div>
-        <p>📅 2 Nov 2025 | 📍 Getinnn Arena</p>
+        <p>📅 15 Nov 2025 | ⏰ 6:00 PM | 📍 Getinnn Arena</p>
       </div>
     </div>
   </section>
 
   <section id="u18">
-    <h2>⚡ Under-18 Results</h2>
-    <div class="score-grid">
-      <div class="score-card">
+    <h2>⚡ Under-18 Fixtures</h2>
+    <div class="fixture-grid">
+      <div class="fixture-card">
         <div class="teams">
           <img src="u18a.png"><span>Falcons</span>
           <span>vs</span>
           <img src="u18b.png"><span>Warriors</span>
         </div>
-        <div class="score">4 - 1</div>
-        <p>📅 4 Nov 2025 | 📍 Getinnn Ground</p>
+        <p>📅 18 Nov 2025 | ⏰ 7:00 PM | 📍 Getinnn Ground</p>
       </div>
     </div>
   </section>
 
   <section id="mens">
-    <h2>🔥 Men’s Open Results</h2>
-    <div class="score-grid">
-      <div class="score-card">
+    <h2>🔥 Men’s Open Fixtures</h2>
+    <div class="fixture-grid">
+      <div class="fixture-card">
         <div class="teams">
           <img src="m1.png"><span>City FC</span>
           <span>vs</span>
           <img src="m2.png"><span>Metro FC</span>
         </div>
-        <div class="score">1 - 2</div>
-        <p>📅 5 Nov 2025 | 📍 Mira Stadium</p>
+        <p>📅 20 Nov 2025 | ⏰ 8:00 PM | 📍 Mira Stadium</p>
       </div>
     </div>
   </section>
 
   <section id="womens">
-    <h2>👑 Women’s Open Results</h2>
-    <div class="score-grid">
-      <div class="score-card">
+    <h2>👑 Women’s Open Fixtures</h2>
+    <div class="fixture-grid">
+      <div class="fixture-card">
         <div class="teams">
           <img src="w1.png"><span>Queens FC</span>
           <span>vs</span>
           <img src="w2.png"><span>Lions FC</span>
         </div>
-        <div class="score">3 - 3</div>
-        <p>📅 6 Nov 2025 | 📍 Getinnn Arena</p>
+        <p>📅 21 Nov 2025 | ⏰ 6:30 PM | 📍 Getinnn Arena</p>
       </div>
     </div>
   </section>
 
   <section id="veterans">
-    <h2>🏅 Veterans Results</h2>
-    <div class="score-grid">
-      <div class="score-card">
+    <h2>🏅 Veterans Fixtures</h2>
+    <div class="fixture-grid">
+      <div class="fixture-card">
         <div class="teams">
           <img src="v1.png"><span>Legends</span>
           <span>vs</span>
           <img src="v2.png"><span>Classic FC</span>
         </div>
-        <div class="score">2 - 0</div>
-        <p>📅 7 Nov 2025 | 📍 Mira Turf</p>
+        <p>📅 23 Nov 2025 | ⏰ 5:00 PM | 📍 Mira Turf</p>
       </div>
     </div>
   </section>
@@ -379,3 +370,4 @@
   </script>
 </body>
 </html>
+
